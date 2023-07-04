@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+naruto.access_naruto_property,access_naruto_property,naruto.model_naruto_property,base.group_user,1,1,1,1
+naruto.access_naruto_property_type,access_naruto_property_type,naruto.model_naruto_property_type,base.group_user,1,1,1,1
+naruto.access_naruto_property_tags,access_naruto_property_tags,naruto.model_naruto_property_tags,base.group_user,1,1,1,1
+naruto.access_naruto_property_offer,access_naruto_property_offer,naruto.model_naruto_property_offer,base.group_user,1,1,1,1

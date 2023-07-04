@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="naruto_search" model="ir.ui.view">
+            <field name="name">naruto.search</field>
+            <field name="model">naruto.property</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="postcode"/>
+                    <field name="expected_price"/>
+                    <field name="bedrooms"/>
+                    <field name="living_area"/>
+                    <field name="facades"/>
+                    <separator/>
+                    <filter string="Available" name="available" domain="[('active', '=', False)]"/>
+                    <group expand="1" string="Group By">
+                        <filter string="Postcode" name="postcode" context="{'group_by':'postcode'}"/>
+                    </group>
+                </search>
+             </field>
+    </record>
+
+	<record id="naruto_tree" model="ir.ui.view">
+        <field name="name">naruto.tree</field>
+        <field name="model">naruto.property</field>
+        <field name="arch" type="xml">
+            <tree string="Naruto">
+               <field name="name"/>
+               <field name="postcode"/>
+               <field name="bedrooms"/>
+               <field name="living_area"/>
+               <field name="expected_price"/>
+               <field name="selling_price"/>
+               <field name="date_availability"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="naruto_form" model="ir.ui.view">
+        <field name="name">naruto.form</field>
+        <field name="model">naruto.property</field>
+        <field name="arch" type="xml">
+            <form string="Naruto">
+                <sheet>
+                	<group>
+                            <field name="name"/>
+                            <field name="tag_ids" widget="many2many_tags"/>
+                    </group>
+
+                    <group>
+                    	<group>
+                            <field name="property_type_id"/>
+                            <field name="postcode"/>
+                            <field name="date_availability"/>
+                        </group>
+                        <group>
+                        	<field name="expected_price"/>
+                            <field name="selling_price"/>
+                            <field name="best_price"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                    	<page name="Description">
+							<group>
+	                            <field name="garden"/>
+	                            <field name="garden_area"/>
+	                            <field name="garden_orientation"/>
+                        	</group>
+                        </page>
+                        <page name="offers">
+	                        <field name="offer_ids">
+	                        	<tree string="offer">
+					               <field name="price"/>
+					               <field name="partner_id" string="Partner"/>
+					               <field name="validity"/>
+					               <field name="date_deadline" string="deadline"/>
+					               <field name="status"/>
+	                        	</tree>
+	                        </field>
+                        </page>
+                        <page name="Other Info">
+							<group>
+	                        	<field name="seller_id"/>
+	                        	<field name="buyer_id"/>
+                        	</group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+    	</field>
+    </record>
+
+    <record id="naruto_action" model="ir.actions.act_window">
+        <field name="name">Naruto</field>
+        <field name="res_model">naruto.property</field>
+    </record>
+
+    <menuitem
+        id="naruto_menu_root"
+        name="Naruto"/>
+
+        <menuitem
+        id="advetise_menu"
+        name="Advertisement" parent="naruto_menu_root"/>
+
+    <menuitem
+        id="naruto_menu"
+        name="Naruto Property" action="naruto_action" parent="advetise_menu"/>
+
+</odoo>

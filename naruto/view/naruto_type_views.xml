@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="naruto_type_form" model="ir.ui.view">
+        <field name="name">naruto.type.form</field>
+        <field name="model">naruto.property.type</field>
+        <field name="arch" type="xml">
+            <form string="Property Type">
+                <sheet>
+                	<h1>
+                        <field name="name"/>
+                    </h1>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="naruto_type_action" model="ir.actions.act_window">
+        <field name="name">Naruto Type</field>
+        <field name="res_model">naruto.property.type</field>
+    </record>
+
+    <menuitem
+        id="naruto_type_menu_root"
+        name="Naruto"/>
+
+        <menuitem
+        id="settings_menu"
+        name="Settings" parent="naruto_menu_root"/>
+    <menuitem
+        id="naruto_type_menu"
+        name="Property Type" action="naruto_type_action" parent="settings_menu"/>
+
+</odoo>
